@@ -3,13 +3,13 @@ import List from "./List";
 import Alert from "./Alert";
 
 const getLocalStorage = () => {
-  let list = localStorage.getItem('list');
-  if(list){
-    return JSON.parse(localStorage.getItem('list'))
-  }else{
-    return []
+  let list = localStorage.getItem("list");
+  if (list) {
+    return JSON.parse(localStorage.getItem("list"));
+  } else {
+    return [];
   }
-}
+};
 function App() {
   const [name, setName] = useState("");
   const [list, setList] = useState(getLocalStorage());
@@ -23,15 +23,17 @@ function App() {
       // display alert
       showAlert(true, "Please enter value", "danger");
     } else if (name && isEditing) {
-      setList(list.map((item) =>{
-        if(item.id === editID){
-          return{ ...item, title:name}
-        }
-        return item
-      }))
-      setName('')
-      setEditID(null)
-      setIsEditing(false)
+      setList(
+        list.map((item) => {
+          if (item.id === editID) {
+            return { ...item, title: name };
+          }
+          return item;
+        })
+      );
+      setName("");
+      setEditID(null);
+      setIsEditing(false);
       showAlert(true, "Item updated", "success");
       // edit
     } else {
@@ -62,9 +64,9 @@ function App() {
     setName(specificItem.title);
   };
 
-  useEffect(() =>{
-    localStorage.setItem('list', JSON.stringify(list))
-  },[list])
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handelSubmit}>
