@@ -67,19 +67,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
-
-  useEffect(() => {
-    const script = document.createElement('script');
-  
-    script.src = "https://freecountercode.com/service/wdjgoqk2tI3BvHnCTdB1";
-    script.async = true;
-  
-    document.body.appendChild(script);
-  
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handelSubmit}>
